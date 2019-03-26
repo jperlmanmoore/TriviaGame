@@ -1,0 +1,41 @@
+html,
+body {
+    min-height: 100vh;
+}
+
+.row,
+.column {
+    display: flex;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.title, .text, .time, .answer, #question, #answer, #timeleft {
+    font-family: 'Nunito Sans', sans-serif;
+    color: #000000;
+}
+
+.header {
+    padding: 8px 5%;
+    height: 50px;
+}
+
+.carousel-caption {
+    margin-bottom: 30%;
+}
+
+
+.bg-img {
+    background-image: url(assets/images/spotlight-smaller.png);
+    background-position: cover;
+}
+
+.answer {
+    color: #000000;
+}

@@ -1,19 +1,23 @@
 html,
 body {
-    min-height: 100vh;
+    height: 100vh;
+    width: 100vh;
+    padding: 0;
+    margin: 0;
 }
 
-.row,
-.column {
+.row {
     display: flex;
 }
 
 .column {
+    display: flex;
     flex-direction: column;
 }
 
-.align-center {
+.container {
     align-items: center;
+    margin: 15%;
 }
 
 .title, .text, .time, .answer, #question, #answer, #timeleft {
@@ -27,15 +31,24 @@ body {
 }
 
 .carousel-caption {
-    margin-bottom: 30%;
+    margin-bottom: 40%;
 }
-
 
 .bg-img {
-    background-image: url(assets/images/spotlight-smaller.png);
     background-position: cover;
+    margin-left: 5%;
 }
 
-.answer {
+#timer {
     color: #000000;
 }
+
+#qa {
+width: 500px;
+height: 500px;
+margin-bottom: 80%;
+margin-left: 27.5%;
+color: #000000;
+
+}
+

@@ -16,7 +16,9 @@ $(document).ready(function () {
 
     var questions;
 
-    var qaChoice = [{
+    var qaChoice = [
+        
+        {
             question: "What is the biggest fish in the ocean?",
             answer: ["basking shark", "whale shark", "blue whale", "jaws"],
             images: [],
@@ -81,21 +83,37 @@ $(document).ready(function () {
 
     ];
 
-var currentQ = qaChoice.slice();
-
-while(currentQ.length > 0) {
     //make a copy of the array & then put it back in random order each time it loads
-    qaChoice = currentQ.splice(Math.floor(Math.random()*currentQ.length), 1)[0];
-   
-    console.log(qaChoice);
-}
- $("#qa").text("Question: " + qaChoice[0].question + "<br>Answers: " + qaChoice.answer);
+//var currentQ = qaChoice.slice();
+//while(currentQ.length > 0) {
+    
+    //qaChoice = currentQ.splice(Math.floor(Math.random()*currentQ.length), 1)[0];
+    //console.log(qaChoice);
+//}
 
+//other random sort
+var currentQ = qaChoice;  
+    
+    qaChoice.sort (function(a, b) {
+    
+    return 0.5 - Math.random()});
+
+    console.log(qaChoice);
+
+    console.log(currentQ)
+
+    $("#qa").append("<p class='text'>Question: " + qaChoice[0].question + "<br>Answers: " + qaChoice[0].answer + "</p>)");
+        qaChoice++;
+    });
+    //*** I have a weird extra ) stuck in there, and I don't know where it is coming from... :( )
+
+ //timer
 var number = 31;
 
-    var intervalId;
+    var intervalId; //just starts running on the page load, but only stops or resumes on click
 
     $("#stop").on("click", stop);
+    //I want to stop the counter on a guess and go to correct answer/image
 
     $("#resume").on("click", run);
 
@@ -114,6 +132,8 @@ var number = 31;
         stop();
 
         // alert("Time Up!");
+        //if no guesses, then I want to display answer for 10 seconds
+        //
       }
 
     function stop() {
@@ -122,7 +142,7 @@ var number = 31;
     }
 
     run();
-});
+};
 
 
 
@@ -170,4 +190,4 @@ var number = 31;
     //         qaChoice[i] = t;
     //     }
     //     return qaChoice;
-    // };
+    

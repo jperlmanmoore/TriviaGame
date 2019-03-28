@@ -46,9 +46,14 @@ body {
 #qa {
 width: 500px;
 height: 500px;
-margin-bottom: 80%;
-margin-left: 27.5%;
+margin-bottom: 10%;
+margin-left: 40%;
 color: #000000;
+z-index: 5;
+font-family: 
+}
 
+#timer {
+    color: #000000;
 }
 

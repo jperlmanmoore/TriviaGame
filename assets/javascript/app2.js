@@ -74,19 +74,19 @@ $(document).ready(function () {
 
 
 qaChoice.sort(function () {
-    0.5 - Math.random()
-    return qaChoice;
+    return 0.5 - Math.random();
+  
 }); 
 //*if I wanted to sort ascending or descending I would need to pass arguement - (function(a, b) {return a-b)})                            
 //console.log(currentQ);
 console.log(qaChoice)
 
-$.each(qaChoice, function (index, val) {
+$.each(qaChoice, function (_index, _val) {
     $("#question").html("<div class='question'>" + qaChoice[0].question + "</div><br>");
     question++;
 });
 
-$.each(qaChoice, function (index, val) {
+$.each(qaChoice, function (_index, _val) {
     answer++
     $("#answer").html("<button class='btn1 question'>" + qaChoice[0].answer[0] + "</button><br><button class='btn2 question'>" + qaChoice[0].answer[1] + "</button><br><button class='btn3 question'>" + qaChoice[0].answer[2] + "</button><br><button class='btn4 question'>" + qaChoice[0].answer[3] + "</button>");
 });

@@ -8,12 +8,6 @@
     flex-direction: column;
 }
 
-.container {
-    align-items: center;
-    box-align: center;
-}
-
-
 
 .title, .text, #question, #answer {
     font-family: 'Quicksand', sans-serif;
@@ -25,10 +19,6 @@
 .header {
     padding: 8px 5%;
     height: 50px;
-}
-
-.carousel-caption {
-    margin-bottom: 40%;
 }
 
 .bg-img {
@@ -53,15 +43,20 @@
     position: relative;
     bottom: 550px;
     left: 200px;
+    font-size: 20px;
 }
 
-.btn1, .btn2, .btn3, .btn4 {
+.btn0, .btn1, .btn2, .btn3 {
     height: 50px;
-    width: 250px;
+    width: 200px;
     color: #000000;
     background-color: blanchedalmond;
     border-color: bisque;
     z-index: 900;
+    margin-left: 10px;
+    margin-right: 10px;
+    
+    
 }
 
 #answer {
@@ -71,5 +66,17 @@
     z-index: 5;
     font-family: 'Quicksand', sans-serif;
     margin-left: 125px;
+    font-size: 20px;
    
+}
+
+.carousel-caption {
+    color: #000000;
+    margin-bottom: 50%;
+    position: fixed;
+    justify-content: center;
+}
+
+.carousel-caption2 {
+    position: fixed;
 }

@@ -1,99 +1,124 @@
 $(document).ready(function () {
 
-    // var gameMode = "not-started"
+    //var gameMode = "not-started"
+    //when start counts down 30 seconds to answer
+    //need to record if corrent, incorrect, or not answered
+    // display my current q&A
+    // do a 10 second screen that shows the correct answer and a picture
+    //then move to the next q&a set
 
-    guessRound = 1;
-    answerCorrect = 0;
-    answerWrong = 0;
-    noAnswer = 0;
-
+    var guessRound = 1;
+    var answerCorrect = 0;
+    var answerWrong = 0;
+    var noAnswer = 0;
+    
 
     var qaChoice = [{
-        question: "What is the biggest fish in the ocean?",
-        answer: ["basking shark", "whale shark", "blue whale", "jaws"],
-        images: [],
-        correctAnswer: "whale shark"
-    },
+            question: "What is the biggest fish in the ocean?",
+            answer: ["basking shark", "whale shark", "blue whale", "jaws"],
+            images: [],
+            correctAnswer: "whale shark"
+        },
 
-    {
-        question: "What was the original color of Oscar the Grouch?",
-        answer: ["orange", "purple", "green", "pink"],
-        images: [],
-        correctAnswer: "orange"
-    },
+        {
+            question: "What was the original color of Oscar the Grouch?",
+            answer: ["orange", "purple", "green", "pink"],
+            images: [],
+            correctAnswer: "orange"
+        },
 
-    {
-        question: "what does 'M & M's' actually stand for?",
-        answer: ["Mmmmm & Mmmmmmm", "marvelous & ", "Mork & Mindy", "Mars & Murie's"],
-        images: [],
-        correctAnswer: "Mork & Mindy"
-    },
+        {
+            question: "what does 'M & M's' actually stand for?",
+            answer: ["Mmmmm & Mmmmmmm", "marvelous & ", "Mork & Mindy", "Mars & Murie's"],
+            images: [],
+            correctAnswer: "Mork & Mindy"
+        },
 
-    {
-        question: "The skin of which fruit can cause poison ivy symptoms?",
-        answer: ["kiwi", "mango", "pomegranate", "papaya"],
-        images: [],
-        correctAnswer: "kiwi"
-    },
+        {
+            question: "The skin of which fruit can cause poison ivy symptoms?",
+            answer: ["kiwi", "mango", "pomegranate", "papaya"],
+            images: [],
+            correctAnswer: "kiwi"
+        },
 
-    {
-        question: "Which president owned a bar before taking office?",
-        answer: ["Millard Fillmore", "Lyndon B. Johnson", "Jimmy Carter", "Abraham Lincoln"],
-        images: [],
-        correctAnswer: "Abraham Lincoln"
-    },
+        {
+            question: "Which president owned a bar before taking office?",
+            answer: ["Millard Fillmore", "Lyndon B. Johnson", "Jimmy Carter", "Abraham Lincoln"],
+            images: [],
+            correctAnswer: "Abraham Lincoln"
+        },
 
-    {
-        question: "Play-doh was originally made to be...",
-        answer: ["stress reliever", "wall-paper remover", "glue", "salt-lick"],
-        images: [],
-        correctAnswer: "wall-paper remover"
-    },
+        {
+            question: "Play-doh was originally made to be...",
+            answer: ["stress reliever", "wall-paper remover", "glue", "salt-lick"],
+            images: [],
+            correctAnswer: "wall-paper remover"
+        },
 
-    {
-        question: "A baby puffin is called a ...",
-        answer: ["puff puff", "little puffer", "puffling", "puffy"],
-        images: [],
-        correctAnswer: "puffling"
-    },
+        {
+            question: "A baby puffin is called a ...",
+            answer: ["puff puff", "little puffer", "puffling", "puffy"],
+            images: [],
+            correctAnswer: "puffling"
+        },
 
-    {
-        question: "A group of bunnies is called a ...",
-        answer: ["kerfluffle", "fluffle", "hoppy", "fluffy hoppy"],
-        images: [],
-        correctAnswer: "fluffle"
-    },
+        {
+            question: "A group of bunnies is called a ...",
+            answer: ["kerfluffle", "fluffle", "hoppy", "fluffy hoppy"],
+            images: [],
+            correctAnswer: "fluffle"
+        },
 
-    {
-        question: "How many ridges are on a dime?",
-        answer: ["58", "202", "118", "30"],
-        images: [],
-        correctAnswer: "118"
-    },
-];
+        {
+            question: "How many ridges are on a dime?",
+            answer: ["58", "202", "118", "30"],
+            images: [],
+            correctAnswer: "118"
+        },
+    ];
+
+    loadcurrentQ();
+
+    qaChoice.sort(function () {
+        return 0.5 - Math.random();
+    });
+    console.log(qaChoice);
+
+    function loadcurrentQ(currentQ) {
+        
+        var currentQIndex = 0;
+        var currentQ = qaChoice[currentQIndex];
+        var question = $("<div>");
+        question.addClass("carousel-caption");
+        var q = $("<p>").text(currentQ.question);
+        question.append(q);
+        $("#question").text(currentQ.question);
+        $(".qaPlace").append(question);
+        
+        $.each(currentQ.answer, function(){
+            var currentQIndex = 0;
+            var currentQ = qaChoice[currentQIndex];
+            var answer = $("<div>");
+            answer.addClass("carousel-caption")
+            var a = $("<button>").text(currentQ.answer[0]).addClass("btn0");
+            var b = $("<button>").text(currentQ.answer[1]).addClass("btn1");
+            var c = $("<button>").text(currentQ.answer[2]).addClass("btn2");
+            var d = $("<button>").text(currentQ.answer[3]).addClass("btn3");
+            answer.append(a).append(b).append(c).append(d);
+            $("#answer").text(currentQ.answer);
+            $(".qaPlace").append(answer);
+        });
 
 
-qaChoice.sort(function () {
-    return 0.5 - Math.random();
-  
-}); 
-//*if I wanted to sort ascending or descending I would need to pass arguement - (function(a, b) {return a-b)})                            
-//console.log(currentQ);
-console.log(qaChoice)
+       
+        };
 
-$.each(qaChoice, function (_index, _val) {
-    $("#question").html("<div class='question'>" + qaChoice[0].question + "</div><br>");
-    question++;
-});
-
-$.each(qaChoice, function (_index, _val) {
-    answer++
-    $("#answer").html("<button class='btn1 question'>" + qaChoice[0].answer[0] + "</button><br><button class='btn2 question'>" + qaChoice[0].answer[1] + "</button><br><button class='btn3 question'>" + qaChoice[0].answer[2] + "</button><br><button class='btn4 question'>" + qaChoice[0].answer[3] + "</button>");
-});
+       
+    });
 
 
-
-});
+      
+    
 
 //30 second timer function - used on page for showing q&a
 // var timer30 = 31;
@@ -139,24 +164,20 @@ $.each(qaChoice, function (_index, _val) {
 //
 
 
-  
 
 
-    
 
 
-    // $(this).addClass("");
-    //     $("#answer").not(this).hide();
-    //     $("question").html("");
 
 
-    // $("#answer").click(function(){
-    //     if (gameMode = "started") {
-    //         if (guessRound === 2) {
-    //             $("qa")
-    //         } 
-    // }
-    // });
+// $(this).addClass("");
+//     $("#answer").not(this).hide();
+//     $("question").html("");
 
 
-    
+// $("#answer").click(function(){
+//     if (gameMode = "started") {
+//         if (guessRound === 2) {
+//             $("qa")
+//         } 
+// }

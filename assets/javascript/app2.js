@@ -13,63 +13,63 @@ $(document).ready(function () {
     var qaChoice = [{
             question: "What is the biggest fish in the ocean?",
             answer: ["basking shark", "whale shark", "blue whale", "jaws"],
-            images: [],
+            images: "assets/baskingshark.jpg",
             correctAnswer: "basking shark"
         },
 
         {
             question: "What was the original color of Oscar the Grouch?",
             answer: ["orange", "purple", "green", "pink"],
-            images: [],
+            images: "assets/orangeoscar.jpg",
             correctAnswer: "orange"
         },
 
         {
             question: "what does 'M & M's' actually stand for?",
             answer: ["Mmmmm & Mmmmmmm", "marvelous & ", "Mork & Mindy", "Mars & Murie's"],
-            images: [],
+            images: "assets/mork&mindy.jpg",
             correctAnswer: "Mork & Mindy"
         },
 
         {
             question: "The skin of which fruit can cause poison ivy symptoms?",
             answer: ["kiwi", "mango", "pomegranate", "papaya"],
-            images: [],
+            images: "assets/kiwi.jpg",
             correctAnswer: "kiwi"
         },
 
         {
             question: "Which president owned a bar before taking office?",
             answer: ["Millard Fillmore", "Lyndon B. Johnson", "Jimmy Carter", "Abraham Lincoln"],
-            images: [],
+            images: "assets/abrahamlincoln.jpg",
             correctAnswer: "Abraham Lincoln"
         },
 
         {
             question: "Play-doh was originally made to be...",
             answer: ["stress reliever", "wall-paper remover", "glue", "salt-lick"],
-            images: [],
+            images: "assets/play-doh.jpg",
             correctAnswer: "wall-paper remover"
         },
 
         {
             question: "A baby puffin is called a ...",
             answer: ["puff puff", "little puffer", "puffling", "puffy"],
-            images: [],
+            images: "assets/puffling.jpg",
             correctAnswer: "puffling"
         },
 
         {
             question: "A group of bunnies is called a ...",
             answer: ["kerfluffle", "fluffle", "hoppy", "fluffy hoppy"],
-            images: [],
+            images: "assets/bunnies.jpg",
             correctAnswer: "fluffle"
         },
 
         {
             question: "How many ridges are on a dime?",
             answer: ["58", "202", "118", "30"],
-            images: [],
+            images: "assets/dime.jpg",
             correctAnswer: "118"
         },
     ];
@@ -85,22 +85,21 @@ $(document).ready(function () {
 
         var currentQIndex = 0;
         var currentQ = qaChoice[currentQIndex];
-        var question = $("<div>");
-        question.addClass("carousel-caption");
-        var q = $("<p>").text(currentQ.question);
+        var question = $("<div><br>");
+        var q = $("<p>").text(currentQ.question).addClass("carousel-caption mb-5 px-5");
         question.append(q);
         $("#question").text(currentQ.question);
-        $(".qaPlace").append(question);
+        $(".qaPlace").prepend(question);
 
 
         var currentQIndex = 0;
         var currentQ = qaChoice[currentQIndex];
-        var answer = $("<div>");
-        answer.addClass("carousel-caption2")
-        var a = $("<button>").text(currentQ.answer[0]).addClass("btn0");
-        var b = $("<button>").text(currentQ.answer[1]).addClass("btn1");
-        var c = $("<button>").text(currentQ.answer[2]).addClass("btn2");
-        var d = $("<button>").text(currentQ.answer[3]).addClass("btn3");
+        var answer = $("<br><div>");
+        answer.addClass("carousel-caption")
+        var a = $("<button>").text(currentQ.answer[0]).addClass("btn btn-lg btn0 mx-2 mt-5 btn-dark");
+        var b = $("<button>").text(currentQ.answer[1]).addClass("btn btn-lg btn1 mx-2 mt-5 btn-dark");
+        var c = $("<button>").text(currentQ.answer[2]).addClass("btn btn-lg btn2 mx-2 mt-5 btn-dark");
+        var d = $("<button>").text(currentQ.answer[3]).addClass("btn btn-lg btn3 mx-2 mt-5 btn-dark");
         answer.append(a).append(b).append(c).append(d);
         $("#answer").text(currentQ.answer);
         $(".qaPlace").append(answer);
@@ -133,23 +132,29 @@ $(document).ready(function () {
 
     
     $("#answer").on("click", "button", function(){
-        if ($(this).text()===qaChoice[currentQIndex].correctAnswer);
-        $("")
+        if ($(this).text()===qaChoice[currentQIndex].correctAnswer) {
+            //hide everything, show the right answer and show a picture
+            $(".qaPlace").hide();
+            var scoreCounter = $("<div id='score'>")
+            $("#score").click(function() {
+                $("score").html(function(i, val){
+                    return val*1+1});
+            });
+        };
     });
     
     
     
     
     
-    var score = {
+    var scoreCounter = {
     answerCorrect: 0,
     answerWrong: 0,
     noAnswer: 0,
     }
     
-    scoreCounter = $("<div>")
-    
-    $("#score").html(scoreCounter);
+    scoreCounter = $("<div id='score'>")
+    //$("#score").(scoreCounter);
     };
 });
 

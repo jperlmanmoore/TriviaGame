@@ -7,17 +7,14 @@ $(document).ready(function () {
     // do a 10 second screen that shows the correct answer and a picture
     //then move to the next q&a set
 
-    var guessRound = 1;
-    var answerCorrect = 0;
-    var answerWrong = 0;
-    var noAnswer = 0;
     
+
 
     var qaChoice = [{
             question: "What is the biggest fish in the ocean?",
             answer: ["basking shark", "whale shark", "blue whale", "jaws"],
             images: [],
-            correctAnswer: "whale shark"
+            correctAnswer: "basking shark"
         },
 
         {
@@ -79,13 +76,13 @@ $(document).ready(function () {
 
     loadcurrentQ();
 
-    qaChoice.sort(function () {
-        return 0.5 - Math.random();
-    });
-    console.log(qaChoice);
-
     function loadcurrentQ(currentQ) {
-        
+
+        qaChoice.sort(function () {
+            return 0.5 - Math.random();
+        });
+        //console.log(qaChoice);
+
         var currentQIndex = 0;
         var currentQ = qaChoice[currentQIndex];
         var question = $("<div>");
@@ -94,53 +91,73 @@ $(document).ready(function () {
         question.append(q);
         $("#question").text(currentQ.question);
         $(".qaPlace").append(question);
-        
-        $.each(currentQ.answer, function(){
-            var currentQIndex = 0;
-            var currentQ = qaChoice[currentQIndex];
-            var answer = $("<div>");
-            answer.addClass("carousel-caption")
-            var a = $("<button>").text(currentQ.answer[0]).addClass("btn0");
-            var b = $("<button>").text(currentQ.answer[1]).addClass("btn1");
-            var c = $("<button>").text(currentQ.answer[2]).addClass("btn2");
-            var d = $("<button>").text(currentQ.answer[3]).addClass("btn3");
-            answer.append(a).append(b).append(c).append(d);
-            $("#answer").text(currentQ.answer);
-            $(".qaPlace").append(answer);
-        });
 
 
-       
+        var currentQIndex = 0;
+        var currentQ = qaChoice[currentQIndex];
+        var answer = $("<div>");
+        answer.addClass("carousel-caption2")
+        var a = $("<button>").text(currentQ.answer[0]).addClass("btn0");
+        var b = $("<button>").text(currentQ.answer[1]).addClass("btn1");
+        var c = $("<button>").text(currentQ.answer[2]).addClass("btn2");
+        var d = $("<button>").text(currentQ.answer[3]).addClass("btn3");
+        answer.append(a).append(b).append(c).append(d);
+        $("#answer").text(currentQ.answer);
+        $(".qaPlace").append(answer);
+
+
+        var timer30 = 31;
+        var intervalId;
+        function run() {
+            intervalId = setInterval(decrement, 1000);
+        }
+
+        function decrement() {
+            $("#timer").append("<div>" + timer30 + "<div>");
+            timer30--;
+
+        if (timer30 === 0) {
+            stop();
+                
+            }
+
+            function stop() {
+                clearInterval(intervalId);
+            }
+            run();
         };
 
-       
-    });
+        $("#timer").append("<div>" + timer30 + "<div>");
 
+    var guessRound = 1;
 
-      
     
+    $("#answer").on("click", "button", function(){
+        if ($(this).text()===qaChoice[currentQIndex].correctAnswer);
+        $("")
+    });
+    
+    
+    
+    
+    
+    var score = {
+    answerCorrect: 0,
+    answerWrong: 0,
+    noAnswer: 0,
+    }
+    
+    scoreCounter = $("<div>")
+    
+    $("#score").html(scoreCounter);
+    };
+});
+
+
+
+
 
 //30 second timer function - used on page for showing q&a
-// var timer30 = 31;
-// var intervalId; 
-
-//     function run() {
-//       intervalId = setInterval(decrement, 1000);
-//     }
-//     function decrement() {
-//       timer30--;
-//       $("#timer").html("<div>" + timer30 + "<div>");
-//       if (timer30 === 0) {
-//         stop();
-//         // alert("Time Up!");
-//         //if no guesses, then I want to display answer for 10 seconds
-//         //
-//       }
-//     function stop() {
-//       clearInterval(intervalId);
-//     }
-//     run();
-// };
 
 // timer10();
 // function timer10(){
@@ -152,32 +169,3 @@ $(document).ready(function () {
 
 //      $("#timer").html("Time remaining: " + "00:" + count + " secs");
 //     }
-
-// initGameMode()
-
-//initGameMode();
-// function initGameMode() {
-
-
-//random sort of question
-//var currentQ = qaChoice;  
-//
-
-
-
-
-
-
-
-
-// $(this).addClass("");
-//     $("#answer").not(this).hide();
-//     $("question").html("");
-
-
-// $("#answer").click(function(){
-//     if (gameMode = "started") {
-//         if (guessRound === 2) {
-//             $("qa")
-//         } 
-// }

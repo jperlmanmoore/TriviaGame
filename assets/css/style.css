@@ -1,14 +1,4 @@
 
-.row {
-    display: flex;
-}
-
-.column {
-    display: flex;
-    flex-direction: column;
-}
-
-
 .title, .text, #question, #answer {
     font-family: 'Quicksand', sans-serif;
     color: #000000;
@@ -23,7 +13,6 @@
 
 .bg-img {
     background-position: cover;
-    box-align: center;
 }
 
 #timer {
@@ -79,4 +68,6 @@
 
 .carousel-caption2 {
     position: fixed;
+    width: 950px;
+    margin-left: 5%;
 }

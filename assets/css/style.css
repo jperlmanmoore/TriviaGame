@@ -1,38 +1,8 @@
-
-.title, .text {
-    font-family: 'Quicksand', sans-serif;
-    color: #000000;
-    font-weight: bold;
-
+.quizarea {
+    margin-top: 150px;
+    background: lightgrey;
 }
 
-.header {
-    padding: 8px 5%;
-    height: 50px;
-}
-
-.bg-img {
-    position: relative;
-    left: 350px;
-}
-
-#question {
-    color: #000000;
-    z-index: 5;
-    font-family: 'Quicksand', sans-serif;
-    
-}
-
-#answer {
-    color: #000000;
-    z-index: 5;
-    font-family: 'Quicksand', sans-serif;
-    font-size: 20px;
-   
-}
-
-.carousel-caption {
-    color: #000000;
-    font-size: 25px;
-    font-weight: bolder;
+.timeandscore {
+    background: lightgray;
 }

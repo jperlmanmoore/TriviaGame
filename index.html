@@ -15,39 +15,42 @@
 
 <body>
     <div class="container-fluid">
-    <p class="text display-1 bg-light text-center py-4 fixed-top">
-        TRIVIAL TRIVIA!
-    </p>
+        <div class="row">
+            <div class='col-12'>
+                <p class="text display-1 bg-light text-center mb-5 py-4 fixed-top">
+                TRIVIAL TRIVIA!
+                </p>
+            </div>
+        </div>
     </div>
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="qaPlace col-12">
-                <a href="https://www.freepik.com/free-photos-vectors/background">www.freepik.com</a>
-                <img src="assets/images/12774.jpg" class="bg-img img-responsive rounded">
-                </div>
+        <br>
+        <br>
+
+    <div class="quizarea container-fluid">
+            <div class="row">
+                <div id="qaPlace" class="col-12">
+                <button class="submit"></button>
+                
             </div>
-             
         </div>
     </div>
 
     <br>
     <br>
 
-    <div class="container-fluid">
+    <div class="timeandscore container-fluid">
         <div class="row mt-5">
             <div class="col-12">
-            <span id="timer" class="text-center text-dark"></span><span id="score"></span>
+                <span id="timer"></span><Span id="results">Results</Span>
             </div>
         </div>
     </div>
 
 </body>
 
-<script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-<script src="assets/javascript/app2.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="assets/javascript/quiz.js"></script>
 
 </html>

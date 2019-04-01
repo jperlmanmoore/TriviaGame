@@ -3,19 +3,32 @@
     background: skyblue;
     padding-top: 25px;
     padding-bottom: 25px;
-    margin-left: 25px;
+    max-width: 1500px;
+
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    margin-bottom: 50px:
     /*margin-right: 25px;*/
 }
 
 .timeandscore {
-    background: skyblue;
-    margin-left: 25px;
-    margin-top: 10px;
-    height: 75px;
-    line-height: 50px;
+    height: 150px;
+    line-height: 60px;
+    position: fixed;
+    bottom: 0;
 }
+
 
 body {
     background-color: rgb(60, 144, 172);
+    
+}
+
+img {
+    margin-right: 10px;
+    margin-left: 10px;
 }
 

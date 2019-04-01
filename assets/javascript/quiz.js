@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    var answerCorrect = 0;
     //const results = $("<div>");
     //const submit = $("<button>");
 
@@ -54,22 +54,22 @@ $(document).ready(function () {
             },
 
         ];
-        //display questions and answers
+
         qaChoice.sort(function () {
             return 0.5 - Math.random();
         });
 
         //display each question and answer set
         $.each(qaChoice, function (i, v) {
-            const quiz = $("<div>");
-            const q = $("<p>").text("" + v.question + "").addClass("text-dark");
-            var a = $("<button>").text(v.answer[0]).addClass("btn btn-lg btn0 mx-2 mb-1 btn-dark");
-            var b = $("<button>").text(v.answer[1]).addClass("btn btn-lg btn1 mx-2 mb-1 btn-dark");
-            var c = $("<button>").text(v.answer[2]).addClass("btn btn-lg btn2 mx-2 mb-1 btn-dark");
-            var d = $("<button>").text(v.answer[3]).addClass("btn btn-lg btn3 mx-2 mb-1 btn-dark");
+            const quiz = $("<br><div><br>");
+            const q = $("<p>").text("" + v.question + "").addClass("text-dark h4");
+            var a = $("<button>").text(v.answer[0]).addClass("btn btn-lg btn0 mx-2 btn-dark").addClass(v.correctAnswer === v.answer[0] ? "correct" : "not-correct");
+            var b = $("<button>").text(v.answer[1]).addClass("btn btn-lg btn1 mx-2 btn-dark").addClass(v.correctAnswer === v.answer[1] ? "correct" : "not-correct");
+            var c = $("<button>").text(v.answer[2]).addClass("btn btn-lg btn2 mx-2 btn-dark").addClass(v.correctAnswer === v.answer[2] ? "correct" : "not-correct");
+            var d = $("<button>").text(v.answer[3]).addClass("btn btn-lg btn3 mx-2 btn-dark").addClass(v.correctAnswer === v.answer[3] ? "correct" : "not-correct");
             quiz.append(q).append(a).append(b).append(c).append(d);
-            console.log(quiz.html());
-            console.log("#qaPlace: " + $("#qaPlace").length);
+            //console.log(quiz.html());
+            //console.log("#qaPlace: " + $("#qaPlace").length);
 
             $("#qaPlace").append(quiz);
         });
@@ -80,40 +80,63 @@ $(document).ready(function () {
         //  })
 
         //score
-        const answerCorrect = 0;
-        const answerWrong = 0;
+
+        let answerCorrect = 0;
+        let answerWrong = 0;
 
         $("button").on("click", function (event) {
-            event.preventDefault;
+            event.preventDefault();
 
-            if ($(this).text() === correctAnswer) {
+            console.log('clicked', $(this).text());
+
+            //if ($(this).text() === correctAnswer) {
+            if ($(this).hasClass("correct") === true) {
                 answerCorrect++;
-                $("#results").html("<p> Correct: " + answerCorrect + "</p>");
-            
-            } else if($(this).text() != correctAnswer) {
+                $(this).parent().find(".not-correct").hide();
+
+            } else {
                 answerWrong++;
-                $("#results").html("<p> Wrong: " + answerWrong + "</p>");
-                
+
+                $(this).parent().find(".not-correct").css("background-color", "red").prop("disabled", true);
+                $(this).parent().find(".correct").css("background-color", "green").prop("disabled", true);
             };
-        })
+
+            $("#results").text("Correct: " + answerCorrect + " Wrong: " + answerWrong);
+        });
 
         //timer
-        var number = 10;
+        var number = 30;
         var intervalId;
+
         function run() {
+            number = 30;
+            $("#qaPlace button").show().css('backgroun-color', '').prop("disabled", false);
             intervalId = setInterval(decrement, 1000);
+
         }
+
         function decrement() {
             number--;
-            $("#timer").html("<h2>" + number + "</h2>");
+            $("#timer").html("<h2> You have " + number + " seconds!</h2>");
             if (number === 0) {
                 stop();
+                $("#restart").addClass("btn btn-lg btn-dark mx-auto").show();
             }
-        }
+
+        };
+
         function stop() {
             clearInterval(intervalId);
         }
-        run();
-    });
+        //restart button click event
 
-}); //end document ready3
+
+        //document ready run
+        run();
+
+    
+        $("#restart").click(function(e) {
+            run();
+        });
+    });// document on ready 2
+});// document on ready 1

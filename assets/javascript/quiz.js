@@ -118,9 +118,9 @@ $(document).ready(function () {
         function decrement() {
             number--;
             $("#timer").html("<h2> You have " + number + " seconds!</h2>");
-            if (number === 0) {
+            if (number <= 0) {
                 stop();
-                $("#restart").addClass("btn btn-lg btn-dark mx-auto").show();
+                $("#restart").show();
             }
 
         };

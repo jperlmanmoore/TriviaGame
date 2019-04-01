@@ -1,9 +1,7 @@
 $(document).ready(function () {
-    var answerCorrect = 0;
-    //const results = $("<div>");
-    //const submit = $("<button>");
-
+    
     $(function () {
+        //object array
         const qaChoice = [{
                 question: "What is Picasso's last name at birth?",
                 answer: ["Gonzalez", "Ruiz", "Mendoza", "Valdez"],
@@ -48,13 +46,14 @@ $(document).ready(function () {
 
             {
                 question: "Which painter did Picasso admire as a master?",
-                answer: ["Munch", "lMatisse", "Cezanne", "O'Keefe"],
+                answer: ["Munch", "Matisse", "Cezanne", "O'Keefe"],
                 images: "#",
                 correctAnswer: "Cezanne"
             },
 
         ];
 
+        //random sort questions each time
         qaChoice.sort(function () {
             return 0.5 - Math.random();
         });
@@ -68,19 +67,13 @@ $(document).ready(function () {
             var c = $("<button>").text(v.answer[2]).addClass("btn btn-lg btn2 mx-2 btn-dark").addClass(v.correctAnswer === v.answer[2] ? "correct" : "not-correct");
             var d = $("<button>").text(v.answer[3]).addClass("btn btn-lg btn3 mx-2 btn-dark").addClass(v.correctAnswer === v.answer[3] ? "correct" : "not-correct");
             quiz.append(q).append(a).append(b).append(c).append(d);
-            //console.log(quiz.html());
-            //console.log("#qaPlace: " + $("#qaPlace").length);
+            //need to correct so that when click the restart button it does not show a count of one wrong answer
 
             $("#qaPlace").append(quiz);
         });
 
-        //  $.each(qaChoice, function(_index, _val){
-        //      console.log(this.question);
-        //      console.log(this.answer); 
-        //  })
-
-        //score
-
+       
+        //correct & incorrect counter
         let answerCorrect = 0;
         let answerWrong = 0;
 
@@ -89,7 +82,7 @@ $(document).ready(function () {
 
             console.log('clicked', $(this).text());
 
-            //if ($(this).text() === correctAnswer) {
+            
             if ($(this).hasClass("correct") === true) {
                 answerCorrect++;
                 $(this).parent().find(".not-correct").hide();
@@ -128,15 +121,12 @@ $(document).ready(function () {
         function stop() {
             clearInterval(intervalId);
         }
-        //restart button click event
-
-
-        //document ready run
+    
         run();
 
-    
+        //restart
         $("#restart").click(function(e) {
             run();
         });
-    });// document on ready 2
+    });// document on ready 2 -- shorthand way of doing this
 });// document on ready 1

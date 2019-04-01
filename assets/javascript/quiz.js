@@ -103,7 +103,7 @@ $(document).ready(function () {
         var intervalId;
 
         function run() {
-            number = 10;
+            number = 30;
             $("#qaPlace button").show().css('backgroun-color', '').prop("disabled", false);
             intervalId = setInterval(decrement, 1000);
             // correctAnswer = 0;

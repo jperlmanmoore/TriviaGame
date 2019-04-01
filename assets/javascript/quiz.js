@@ -90,30 +90,33 @@ $(document).ready(function () {
             } else {
                 answerWrong++;
 
-                $(this).parent().find(".not-correct").css("background-color", "red").prop("disabled", true);
-                $(this).parent().find(".correct").css("background-color", "green").prop("disabled", true);
+                $(this).parent().find(".not-correct").prop("disabled", true);
+                $(this).parent().find(".correct").prop("disabled", true);
             };
 
             $("#results").text("Correct: " + answerCorrect + " Wrong: " + answerWrong);
         });
 
         //timer
+        //if you click restart before the time has run out it does not rest the buttons, and the time will count negative
         var number = 30;
         var intervalId;
 
         function run() {
-            number = 30;
+            number = 10;
             $("#qaPlace button").show().css('backgroun-color', '').prop("disabled", false);
             intervalId = setInterval(decrement, 1000);
+            // correctAnswer = 0;
+            // answerWrong = 0;
 
         }
 
         function decrement() {
             number--;
             $("#timer").html("<h2> You have " + number + " seconds!</h2>");
-            if (number <= 0) {
+            if (number === 0) {
                 stop();
-                $("#restart").show();
+                
             }
 
         };
@@ -122,11 +125,14 @@ $(document).ready(function () {
             clearInterval(intervalId);
         }
     
-        run();
-
-        //restart
+       
+        //restart -- does not work correctly if you click reset bfore the time has not run out - will count negative
         $("#restart").click(function(e) {
             run();
+            answerCorrect = 0;
+            answerWrong = 0;
         });
+
+        run();
     });// document on ready 2 -- shorthand way of doing this
 });// document on ready 1

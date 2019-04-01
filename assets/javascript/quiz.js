@@ -127,6 +127,7 @@ $(document).ready(function () {
     
        
         //restart -- does not work correctly if you click reset bfore the time has not run out - will count negative
+        //also counts click to restart as a wrong answer, but seems to correct as the round starts and you click the first wrong answer
         $("#restart").click(function(e) {
             run();
             answerCorrect = 0;
